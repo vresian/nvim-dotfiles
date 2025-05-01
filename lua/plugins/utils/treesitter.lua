@@ -9,7 +9,23 @@ return {
                 disable = { 'ui' }
             },
             ensure_installed = {
-                'lua', 'vim', 'html', 'c', 'css', 'rust', 'javascript', 'c_sharp', 'cpp', 'prisma', 'svelte', 'typescript', 'javascript', 'slint', 'python'
+                'lua',
+                'vim',
+                'html',
+                'c',
+                'css',
+                'rust',
+                'javascript',
+                'c_sharp',
+                'cpp',
+                'prisma',
+                'svelte',
+                'typescript',
+                'javascript',
+                'slint',
+                'python',
+                'blueprint',
+                'vala'
             }
 	      },
 	      config = function(_, opts)

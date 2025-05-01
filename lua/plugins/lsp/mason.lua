@@ -23,7 +23,8 @@ return {
                     'svelte',
                     'slint_lsp',
                     'lemminx',
-                    'pyright'
+                    'pyright',
+                    'vala_ls'
                 }
             })
         end;

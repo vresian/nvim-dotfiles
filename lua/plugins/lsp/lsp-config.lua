@@ -64,29 +64,17 @@ return {
         lspconfig.slint_lsp.setup({capabilities = capabilities});
         lspconfig.pyright.setup({capabilities = capabilities});
         lspconfig.lemminx.setup({capabilities = capabilities});
-        vim.cmd [[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]
+        lspconfig.vala_ls.setup({capabilities = capabilities});
 
+        vim.lsp.config["blueprint_ls"] = {
+            cmd = { 'blueprint-compiler', 'lsp' },
+            filetypes = { "blp" }
+        }
+        vim.lsp.enable("blueprint_ls");
+        vim.cmd [[ autocmd BufRead,BufNewFile *.blp set filetype=blp ]]
 
         vim.keymap.set('n', 'K', require('hover').hover, {desc = 'hover.nvim'});
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
         vim.keymap.set({ 'n' }, '<leader>ca', vim.lsp.buf.code_action, {})
-
-        -- AVALONIA
-
-        vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-            pattern = { "*.axaml" },
-            callback = function(event)
-                vim.lsp.start {
-                    name = "avalonia",
-                    cmd = { "avalonia-ls" },
-                    root_dir = vim.fn.getcwd(),
-                }
-            end
-        })
-        vim.filetype.add({
-            extension = {
-                axaml = "xml",
-            },
-        })
     end;
 }
